@@ -21,6 +21,7 @@ dependencies {
     api(platform("org.junit:junit-bom:5.9.1"))
     api(platform("org.mockito:mockito-bom:4.8.0"))
     api(platform("io.netty:netty5-bom:5.0.0.Alpha5"))
+    api(platform("io.grpc:grpc-bom:1.50.2"))
     constraints {
         api("jakarta.servlet:jakarta.servlet-api:5.0.0")
         api("org.quartz-scheduler:quartz:2.3.2")
