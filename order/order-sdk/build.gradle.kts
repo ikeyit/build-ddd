@@ -8,7 +8,7 @@ plugins {
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("sdk") {
             from(components["java"])
             pom {
                 licenses {
@@ -66,5 +66,6 @@ sourceSets {
 dependencies {
     implementation("io.grpc:grpc-protobuf")
     implementation("io.grpc:grpc-stub")
+    implementation("javax.annotation:javax.annotation-api:1.3.2")
 }
 

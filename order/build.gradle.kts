@@ -18,7 +18,7 @@ configure(subprojects) {
     }
 
     dependencies {
-        implementation(enforcedPlatform(platform("com.ddd:dependency-platform")))
+        implementation(platform(platform("com.ddd:dependency-platform")))
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
