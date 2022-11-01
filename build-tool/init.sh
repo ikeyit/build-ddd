@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 APP_HOME="`pwd -P`"
-ln -s "$APP_HOME/init.gradle.kts" "~/.gradle/init.gradle.kts"
+ln -fs "$APP_HOME/init.gradle.kts" "$HOME/.gradle/init.gradle.kts"
