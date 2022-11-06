@@ -1,4 +1,5 @@
 plugins {
+    id("buildlogic.java")
 }
 
 dependencies {

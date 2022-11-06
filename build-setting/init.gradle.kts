@@ -4,6 +4,7 @@ settingsEvaluated {
             // define your private plugin repository
 //            maven("https://maven.aliyun.com/repository/gradle-plugin")
             gradlePluginPortal()
+            mavenLocal()
         }
     }
 

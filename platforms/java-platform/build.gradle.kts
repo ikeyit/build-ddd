@@ -26,5 +26,6 @@ dependencies {
         api("jakarta.servlet:jakarta.servlet-api:5.0.0")
         api("org.quartz-scheduler:quartz:2.3.2")
         api("com.google.guava:guava:31.1-jre")
+        api("javax.annotation:javax.annotation-api:1.3.2")
     }
 }
