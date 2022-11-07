@@ -10,16 +10,43 @@ plugins {
 //    website = "http://ddd.org"
 //    tags = listOf("ddd", "internal")
 //}
-configurations {
-    val internal = create("internal") {
-        isCanBeResolved = false
-        isCanBeConsumed = false
+afterEvaluate {
+    val javaComponent = components.findByName("java") as AdhocComponentWithVariants
+    configurations {
+        val liteRuntimeElements = create("liteRuntimeElements") {
+            isCanBeResolved = false
+            isCanBeConsumed = true
+
+        }
+
+        liteRuntimeElements.attributes {
+            val attr = runtimeElements.get().attributes;
+            for (a in attr.keySet()) {
+                attribute(a as Attribute<Any>, attr.getAttribute(a)!!)
+            }
+        }
+
+        liteRuntimeElements.dependencies.addAll(runtimeElements.get().allDependencies.filter {
+            println(it.name)
+            it.name != "build-platform"
+        })
+
+        liteRuntimeElements.outgoing {
+            runtimeElements.get().outgoing.artifacts.forEach {
+                artifact(it)
+            }
+        }
+        javaComponent.addVariantsFromConfiguration(liteRuntimeElements) {
+            // dependencies for this variant are considered runtime dependencies
+            mapToMavenScope("runtime")
+        }
+
+        javaComponent.withVariantsFromConfiguration(runtimeElements.get()) {
+            skip()
+        }
     }
 
-    compileClasspath.get().extendsFrom(internal)
-    runtimeClasspath.get().extendsFrom(internal)
-    testCompileClasspath.get().extendsFrom(internal)
-    testRuntimeClasspath.get().extendsFrom(internal)
+
 }
 
 gradlePlugin {
@@ -29,6 +56,7 @@ gradlePlugin {
         }
     }
 }
+
 
 publishing {
 
@@ -42,23 +70,12 @@ publishing {
                     fromResolutionResult()
                 }
             }
-            pom {
-//                withXml {
-//                    val root = asNode()
-//                    val nodes = root["dependencyManagement"] as groovy.util.NodeList
-//                    if (nodes.isNotEmpty()) {
-//                        nodes.forEach {
-//                            root.remove(it as Node?)
-//                        }
-//                    }
-//                }
-            }
         }
     }
 
 }
 dependencies {
-    "internal"(platform(project(":build-platform")))
+    implementation(platform(project(":build-platform")))
     implementation("org.springframework.boot:org.springframework.boot.gradle.plugin")
     implementation("com.google.protobuf:protobuf-gradle-plugin")
 }
