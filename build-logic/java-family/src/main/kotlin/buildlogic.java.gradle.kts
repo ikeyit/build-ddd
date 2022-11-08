@@ -13,11 +13,7 @@ configurations {
         isCanBeResolved = false
         isCanBeConsumed = false
     }
-
-    compileClasspath.get().extendsFrom(internal)
-    runtimeClasspath.get().extendsFrom(internal)
-    testCompileClasspath.get().extendsFrom(internal)
-    testRuntimeClasspath.get().extendsFrom(internal)
+    implementation.get().extendsFrom(internal)
 }
 
 fun DependencyHandler.`internal`(dependencyNotation: Any): Dependency? =
