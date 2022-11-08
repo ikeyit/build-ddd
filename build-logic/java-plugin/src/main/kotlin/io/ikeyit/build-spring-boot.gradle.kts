@@ -1,5 +1,11 @@
+package io.ikeyit
+
+import gradle.kotlin.dsl.accessors._8f74d40e65146e53e01081fb4d1e0967.implementation
+import gradle.kotlin.dsl.accessors._8f74d40e65146e53e01081fb4d1e0967.processResources
+import org.gradle.kotlin.dsl.dependencies
+
 plugins {
-    id("buildlogic.java")
+    id("io.ikeyit.build-java")
     id("org.springframework.boot")
 }
 

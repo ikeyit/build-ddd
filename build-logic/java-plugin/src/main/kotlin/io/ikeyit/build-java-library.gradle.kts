@@ -1,14 +1,20 @@
+package io.ikeyit
+
+import gradle.kotlin.dsl.accessors._fa8ae7a11e714e4557697295cd0bbd61.publishing
+import org.gradle.kotlin.dsl.`java-library`
+import org.gradle.kotlin.dsl.`maven-publish`
+
 plugins {
-    id("buildlogic.java")
+    id("io.ikeyit.build-java")
     `java-library`
     `maven-publish`
 }
 
 afterEvaluate {
+    // Avoid internal dependency generation in POM and Metadata file
     val runtimeElements by configurations
     val dependencies = configurations["internal"].allDependencies
     val liteRuntimeElements = runtimeElements.copyRecursive {
-        println(it.toString() + ":" + dependencies.contains(it))
         !dependencies.contains(it)
     }
     val javaComponent = components.findByName("java") as AdhocComponentWithVariants
@@ -33,18 +39,10 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("liu")
-                        name.set("zhe")
-                        email.set("liuzhe@example.com")
+                        name.set("ikeyit")
+                        email.set("ikeyit@qq.com")
                     }
                 }
-//                withXml {
-//                    val root = asNode()
-//                    val nodes = root["dependencyManagement"] as groovy.util.NodeList
-//                    if (nodes.isNotEmpty()) {
-//                        root.remove(nodes.first() as groovy.util.Node)
-//                    }
-//                }
             }
 
             versionMapping {

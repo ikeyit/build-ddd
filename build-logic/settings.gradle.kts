@@ -1,3 +1,3 @@
 rootProject.name = "build-logic"
-include("build-platform")
-include("java-family")
+include("plugin-platform")
+include("java-plugin")
