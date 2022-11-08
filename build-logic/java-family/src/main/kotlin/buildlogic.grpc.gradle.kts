@@ -30,10 +30,6 @@ protobuf {
         }
     }
 }
-configurations {
-    findByName("compileProtoPath")?.extendsFrom(getByName("internal"))
-    findByName("testCompileProtoPath")?.extendsFrom(getByName("internal"))
-}
 
 sourceSets {
     main {
