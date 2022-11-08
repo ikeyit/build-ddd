@@ -1,5 +1,5 @@
 plugins {
-    id("buildlogic.spring-boot")
+    id("io.ikeyit.build-spring-boot")
 }
 
 tasks {

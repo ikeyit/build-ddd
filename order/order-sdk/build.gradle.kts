@@ -1,3 +1,3 @@
 plugins {
-    id("buildlogic.grpc")
+    id("io.ikeyit.build-grpc")
 }

@@ -3,10 +3,10 @@ pluginManagement {
     // manage the plugin versions
     plugins {
         id("com.gorylenko.gradle-git-properties").version("2.4.1")
-        id("buildlogic.java").version("1.0-SNAPSHOT")
-        id("buildlogic.java-library").version("1.0-SNAPSHOT")
-        id("buildlogic.spring-boot").version("1.0-SNAPSHOT")
-        id("buildlogic.grpc").version("1.0-SNAPSHOT")
+        id("io.ikeyit.build-java").version("1.0-SNAPSHOT")
+        id("io.ikeyit.build-java-library").version("1.0-SNAPSHOT")
+        id("io.ikeyit.build-spring-boot").version("1.0-SNAPSHOT")
+        id("io.ikeyit.build-grpc").version("1.0-SNAPSHOT")
     }
 }
 //includeBuild("../platforms")

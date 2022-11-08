@@ -1,5 +1,5 @@
 plugins {
-    id("buildlogic.java")
+    id("io.ikeyit.build-java")
 }
 
 dependencies {
