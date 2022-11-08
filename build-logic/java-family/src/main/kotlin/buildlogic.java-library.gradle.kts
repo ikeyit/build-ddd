@@ -4,6 +4,21 @@ plugins {
     `maven-publish`
 }
 
+afterEvaluate {
+    val runtimeElements by configurations
+    val dependencies = configurations["internal"].allDependencies
+    val liteRuntimeElements = runtimeElements.copyRecursive {
+        println(it.toString() + ":" + dependencies.contains(it))
+        !dependencies.contains(it)
+    }
+    val javaComponent = components.findByName("java") as AdhocComponentWithVariants
+    javaComponent.addVariantsFromConfiguration(liteRuntimeElements) {
+        mapToMavenScope("runtime")
+    }
+    javaComponent.withVariantsFromConfiguration(runtimeElements) {
+        skip()
+    }
+}
 
 publishing {
     publications {
